@@ -14,7 +14,7 @@ export default function HowItWorks() {
           </div>
           <div className="step">
             <div className="k">step / 02 · classify</div>
-            <h4>Gemini Nano reads it.</h4>
+            <h4>On-device AI reads it.</h4>
             <p>Locally, in batches of five. Each photo becomes one of eight categories — people, nature, food, documents, and more.</p>
           </div>
           <div className="step">

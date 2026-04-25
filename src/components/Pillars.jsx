@@ -10,7 +10,7 @@ export default function Pillars() {
           <article className="pillar">
             <div className="num">01 / on-device</div>
             <h3>Private by <em>architecture.</em></h3>
-            <p>Classification runs locally using Gemini Nano via ML Kit. Nothing is sent off-device to decide what a photo is.</p>
+            <p>Classification runs locally using on-device AI. Nothing is sent off-device to decide what a photo is.</p>
           </article>
           <article className="pillar">
             <div className="num">02 / selective</div>

@@ -9,7 +9,7 @@ const QUESTIONS = [
   },
   {
     q: 'Which devices support on-device AI?',
-    a: 'Gemini Nano currently runs on Pixel 9 and similar hardware with AICore installed. On unsupported devices, Siftly falls back to treating every photo as a keeper so nothing is missed.',
+    a: 'On-device AI runs on recent Android hardware that supports it. On unsupported devices, Siftly falls back to treating every photo as a keeper so nothing is missed.',
   },
   {
     q: 'Where do backups go?',
