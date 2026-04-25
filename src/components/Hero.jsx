@@ -1,4 +1,4 @@
-export default function Hero({ copy }) {
+export default function Hero() {
   return (
     <header className="hero">
       <div className="wrap">
@@ -6,10 +6,10 @@ export default function Hero({ copy }) {
           <div>
             <div className="eyebrow">for android · on-device ai</div>
             <h1>
-              {copy.heroLine1}
-              <span className="line2"><em>{copy.heroLine2}</em></span>
+              Keep the photos
+              <span className="line2"><em>that matter.</em></span>
             </h1>
-            <p className="hero-lede">{copy.heroLede}</p>
+            <p className="hero-lede">Siftly is a quiet, on-device sieve for your camera roll. It separates real memories from the receipts, screenshots, and blur — then backs up only the keepers to Google Photos.</p>
             <div className="hero-cta">
               <a className="btn btn-primary" href="#get">Join the beta <span className="arrow">↗</span></a>
               <a className="btn btn-ghost" href="#how">How it works</a>

@@ -1,6 +1,6 @@
 const EMAIL = 'hello@siftly.me'
 
-export default function Footer({ copy }) {
+export default function Footer() {
   return (
     <footer>
       <div className="wrap">
@@ -9,7 +9,7 @@ export default function Footer({ copy }) {
             <a className="brand" href="#" style={{ marginBottom: 20 }}>
               <span className="mark" aria-hidden="true"></span>siftly
             </a>
-            <p className="mission">{copy.mission.a} <em>{copy.mission.b}</em></p>
+            <p className="mission">A quiet sieve for the camera roll. Keep the ones, <em>leave the rest.</em></p>
           </div>
           <div>
             <h5>Product</h5>
