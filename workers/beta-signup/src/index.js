@@ -64,6 +64,9 @@ export default {
       body: JSON.stringify({ values: [row] }),
     })
     if (!sheetRes.ok) {
+      // Drop cached token on auth failures so a rotated/revoked credential
+      // can't keep failing for up to ~1h until natural expiry.
+      if (sheetRes.status === 401 || sheetRes.status === 403) tokenCache = undefined
       const detail = await sheetRes.text().catch(() => '')
       console.error('sheet_append_failed', sheetRes.status, detail.slice(0, 500))
       return reply({ ok: false, error: 'sheet_append_failed' }, 502)
