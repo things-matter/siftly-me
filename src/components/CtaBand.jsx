@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-export default function CtaBand({ copy }) {
+export default function CtaBand() {
   const [submitted, setSubmitted] = useState(false)
 
   return (
     <section id="get" className="cta-band">
       <div className="wrap">
         <div className="eyebrow">the beta</div>
-        <h2>{copy.ctaBand.a} <em>{copy.ctaBand.b}</em></h2>
+        <h2>Keep the ones, <em>leave the rest.</em></h2>
         <p>Siftly is in closed beta for Android. Leave an email and we'll send the APK when the next build ships.</p>
         <form
           onSubmit={(e) => { e.preventDefault(); setSubmitted(true) }}
