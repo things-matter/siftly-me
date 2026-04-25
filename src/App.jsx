@@ -9,82 +9,23 @@ import Privacy from './components/Privacy.jsx'
 import Faq from './components/Faq.jsx'
 import CtaBand from './components/CtaBand.jsx'
 import Footer from './components/Footer.jsx'
-import { useTweaks, TweaksPanel, TweakSection, TweakRadio } from './components/TweaksPanel.jsx'
-
-const TWEAKS = [
-  { key: 'mood',    section: 'Mood',    label: 'Palette',       options: ['warm', 'cool', 'mono', 'sepia'] },
-  { key: 'voice',   section: 'Voice',   label: 'Headline type', options: ['serif', 'sans', 'mono']         },
-  { key: 'density', section: 'Density', label: 'Rhythm',        options: ['airy', 'standard', 'compact']   },
-]
-
-const TWEAK_DEFAULTS = {
-  mood: 'warm',
-  voice: 'serif',
-  density: 'standard',
-}
-
-const COPY = {
-  serif: {
-    heroLine1: 'Keep the photos',
-    heroLine2: 'that matter.',
-    heroLede: 'Siftly is a quiet, on-device sieve for your camera roll. It separates real memories from the receipts, screenshots, and blur — then backs up only the keepers to Google Photos.',
-    ctaBand:  { a: 'Keep the ones,', b: 'leave the rest.' },
-    mission:  { a: 'A quiet sieve for the camera roll. Keep the ones,', b: 'leave the rest.' },
-  },
-  sans: {
-    heroLine1: 'keep the photos',
-    heroLine2: 'that matter.',
-    heroLede: "A private, on-device sieve for Android. Sort memories from clutter. Back up only what's worth it. Nothing leaves your phone to be judged.",
-    ctaBand:  { a: 'keep the ones,', b: 'leave the rest.' },
-    mission:  { a: 'private sieve for the camera roll.', b: 'keep the ones.' },
-  },
-  mono: {
-    heroLine1: '// KEEP_PHOTOS',
-    heroLine2: 'THAT_MATTER()',
-    heroLede: 'Runs on-device. Gemini Nano → 8 categories → keepers.upload(GPHOTOS). No cloud inference. No telemetry. Open the dashboard, flip one toggle.',
-    ctaBand:  { a: 'KEEP.ONES(),', b: 'LEAVE.REST()' },
-    mission:  { a: 'ON-DEVICE SIEVE FOR THE CAMERA ROLL.', b: 'KEEP.ONES()' },
-  },
-}
 
 export default function App() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS)
-  const copy = COPY[t.voice]
-
-  useEffect(() => {
-    document.body.dataset.mood = t.mood
-    document.body.dataset.voice = t.voice
-    document.body.dataset.density = t.density
-  }, [t.mood, t.voice, t.density])
-
   useScrollReveal()
   useCollageParallax()
 
   return (
     <>
       <Nav />
-      <Hero copy={copy} />
+      <Hero />
       <Pillars />
       <HowItWorks />
       <Dashboard />
       <Categories />
       <Privacy />
       <Faq />
-      <CtaBand copy={copy} />
-      <Footer copy={copy} />
-      <TweaksPanel title="Tweaks">
-        {TWEAKS.map(({ key, section, label, options }) => (
-          <div key={key}>
-            <TweakSection label={section} />
-            <TweakRadio
-              label={label}
-              value={t[key]}
-              options={options}
-              onChange={(v) => setTweak(key, v)}
-            />
-          </div>
-        ))}
-      </TweaksPanel>
+      <CtaBand />
+      <Footer />
     </>
   )
 }
