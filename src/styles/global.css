@@ -292,11 +292,14 @@
   @media (max-width:960px){ .collage{height:clamp(320px, 58vw, 480px);max-width:560px} }
   .photo{
     position:absolute;border-radius:14px;overflow:hidden;
-    background:var(--card);
     box-shadow:0 20px 40px -20px rgba(26,24,20,0.25), 0 2px 6px rgba(26,24,20,0.04);
     border:1px solid var(--border);
   }
-  .photo > img{
+  /* Descendant selector — the <img> is inside a <picture> wrapper emitted
+     by Picture.jsx, so the old direct-child combinator never matched and
+     the image rendered at intrinsic size with the .photo background
+     leaking through on the unfilled side. */
+  .photo img{
     position:absolute;inset:0;width:100%;height:100%;
     object-fit:cover;display:block;
   }
@@ -335,8 +338,9 @@
   /* Heights are derived from each photo's inline aspect-ratio (set in
      Hero.jsx from the source image's intrinsic w/h), so the frame matches
      the image and nothing gets cropped. ph-1's z-index keeps the People
-     feature photo stacked above ph-3 in the overlap region. */
-  .ph-1{width:62%;top:0;right:0;transform:rotate(2.2deg);z-index:3}
+     feature photo stacked above ph-3 in the overlap region.
+     ph-1 is the lead People shot — wider footprint than the others. */
+  .ph-1{width:78%;top:0;right:0;transform:rotate(2.2deg);z-index:3}
   .ph-2{width:46%;bottom:0;left:0;transform:rotate(-3.5deg);z-index:1}
   .ph-3{width:38%;bottom:8%;right:18%;transform:rotate(5deg);z-index:2}
 
