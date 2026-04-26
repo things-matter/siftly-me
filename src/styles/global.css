@@ -327,12 +327,8 @@
   .photo .badge.utility{background:rgba(255,255,255,0.97);color:var(--muted)}
   .photo .strike{
     position:absolute;inset:0;z-index:1;
-    background:rgba(240,236,228,0.55);
+    background:rgba(240,236,228,0.7);
   }
-  /* Grayscale the underlying photo statically (cheap, render-once) instead of
-     using backdrop-filter:grayscale on .strike, which iOS Safari recomputes
-     per paint and was a major source of the long-page paint stall. */
-  .photo:has(.strike) > picture > img{filter:grayscale(1)}
   .ph-1{width:62%;height:64%;top:0;right:0;transform:rotate(2.2deg)}
   .ph-2{width:46%;height:48%;bottom:0;left:0;transform:rotate(-3.5deg)}
   .ph-3{width:38%;height:38%;bottom:8%;right:18%;transform:rotate(5deg)}
