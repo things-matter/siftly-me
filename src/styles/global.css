@@ -228,7 +228,12 @@
   @media (max-width:880px){ .nav ul{display:none} }
 
   /* ── Hero ───────────────────────────────────────────── */
-  .hero{padding:var(--density-hero-top) 0 var(--density-hero-bottom);position:relative}
+  /* will-change pins Hero to a stable compositing layer so WebKit doesn't
+     decommission it when scrolled fully out of view. Without this, fast
+     scroll-back-to-top has to re-rasterize the 3 parallax photos +
+     perspective + preserve-3d stack, which presents as a brief blank
+     before paint catches up. One layer; cheap relative to what was here. */
+  .hero{padding:var(--density-hero-top) 0 var(--density-hero-bottom);position:relative;will-change:transform}
   .hero-grid{
     display:grid;grid-template-columns:1.15fr 1fr;gap:var(--density-gap);align-items:center;
   }
