@@ -1,7 +1,7 @@
-// Page chrome only. The policy body is fetched from
-// https://github.com/xenirio/siftly/blob/main/app/src/main/assets/privacy_policy.md
-// at build time by scripts/prerender.mjs and passed in as `contentHtml`.
-// Never hard-code policy copy here — the Android app's MD is the source of truth.
+// Page chrome only. The policy body is fetched from the public Gist
+// gist.github.com/xenirio/0ae79679a1bc197f43d35e5bb432229f at build time
+// by scripts/prerender.mjs and passed in as `contentHtml`.
+// Never hard-code policy copy here — the Gist is the source of truth.
 const EMAIL = 'hello@siftly.me'
 
 export default function PrivacyPolicy({ contentHtml = '' }) {

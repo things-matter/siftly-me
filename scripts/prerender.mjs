@@ -50,10 +50,15 @@ function mdToHtml(md) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
+  // Defense-in-depth even though the Gist is trusted: only allow http(s),
+  // mailto, and same-origin/relative hrefs. Anything else (javascript:, data:,
+  // vbscript:) collapses to "#".
+  const safeHref = (u) =>
+    /^(https?:|mailto:|\/|#|\.\.?\/)/i.test(u) ? u : '#'
   const inline = (s) => escapeHtml(s)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, t, u) =>
-      `<a href="${u.replace(/"/g, '&quot;')}" rel="noopener noreferrer">${t}</a>`)
+      `<a href="${safeHref(u).replace(/"/g, '&quot;')}" rel="noopener noreferrer">${t}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^A-Za-z0-9])_([^_\n]+)_(?![A-Za-z0-9])/g, '$1<em>$2</em>')
 
