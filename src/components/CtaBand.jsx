@@ -28,11 +28,11 @@ export default function CtaBand() {
       if (cancelled || !containerRef.current || widgetIdRef.current !== null || !window.turnstile?.render) return
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: SITE_KEY,
-        // Run the challenge silently in the background; the widget UI only
-        // appears in the rare case Cloudflare actually needs the user to
-        // interact (e.g. flagged traffic). Legit visitors get a token with
-        // zero visible widget — nothing to block their flow.
-        appearance: 'interaction-only',
+        // Render the widget visibly so the user always has feedback:
+        // "Verifying…" → "Success!" for clean traffic, or an interactive
+        // checkbox for flagged traffic. interaction-only mode hides the
+        // widget entirely, leaving the user stuck with a disabled submit
+        // button and no visible recourse if Cloudflare wants interaction.
         callback: (token) => { tokenRef.current = token; setVerified(true) },
         'expired-callback': () => { tokenRef.current = ''; setVerified(false) },
         'error-callback': () => { tokenRef.current = ''; setVerified(false) },
