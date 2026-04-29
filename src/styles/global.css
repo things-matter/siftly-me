@@ -170,9 +170,7 @@
   body{
     background:var(--bg);
     color:var(--ink);
-    /* Default to the serif body voice; sans/mono are still available via
-       var(--sans) / var(--mono) on chips, badges, and code-style labels. */
-    font-family:var(--serif);
+    font-family:var(--sans);
     font-weight:400;
     font-size:var(--density-body);
     line-height:1.55;
