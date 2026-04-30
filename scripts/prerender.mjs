@@ -149,6 +149,7 @@ const cssText = await readFile(cssPath, 'utf-8')
 // Serif regular won't collide with the italic variant.
 const interFont = findOne(/^inter-[A-Za-z0-9_]+\.woff2$/, 'Inter font')
 const serifFont = findOne(/^instrument-serif-[A-Za-z0-9_]+\.woff2$/, 'Instrument Serif font')
+const serifItalicFont = findOne(/^instrument-serif-italic-[A-Za-z0-9_]+\.woff2$/, 'Instrument Serif italic font')
 
 // Responsive preload for the LCP hero image. Browser uses imagesrcset/imagesizes
 // to pick the same variant the <picture> would, so the preload doesn't
@@ -161,6 +162,7 @@ const HERO_SIZES = '(max-width: 720px) 80vw, (max-width: 1100px) 40vw, 480px'
 const homePreloads = [
   `<link rel="preload" as="font" type="font/woff2" crossorigin href="${interFont}">`,
   `<link rel="preload" as="font" type="font/woff2" crossorigin href="${serifFont}">`,
+  `<link rel="preload" as="font" type="font/woff2" crossorigin href="${serifItalicFont}">`,
   `<link rel="preload" as="image" type="image/avif" imagesrcset="${heroAvifSrcset}" imagesizes="${HERO_SIZES}" fetchpriority="high">`,
 ].join('\n    ')
 
@@ -216,6 +218,7 @@ const privacyHtml = renderPrivacy(policyHtml, 'en')
 const privacyPreloads = [
   `<link rel="preload" as="font" type="font/woff2" crossorigin href="${interFont}">`,
   `<link rel="preload" as="font" type="font/woff2" crossorigin href="${serifFont}">`,
+  `<link rel="preload" as="font" type="font/woff2" crossorigin href="${serifItalicFont}">`,
 ].join('\n    ')
 
 // Strip every <script type="module"> Vite injected — the privacy page is
