@@ -72,12 +72,14 @@
        family consulted for Thai glyphs (its unicode-range gates it to the
        Thai block, so it's invisible to Latin glyphs). Latin then falls
        through cleanly to ui-serif / ui-sans-serif / ui-monospace if the
-       primary web font isn't loaded. The Google-Fonts-loaded "IBM Plex
-       Sans Thai" stays in the chain as the Android/Windows Thai fallback
-       (its own @font-face declaration carries the same unicode-range gate). */
-    --serif:"Instrument Serif", "SiftlyThai", "IBM Plex Sans Thai", ui-serif, Georgia, serif;
-    --sans:"Inter", "SiftlyThai", "IBM Plex Sans Thai", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-    --mono:"JetBrains Mono", "SiftlyThai", "IBM Plex Sans Thai", ui-monospace, SFMono-Regular, Menlo, monospace;
+       primary web font isn't loaded. "IBM Plex Sans Thai" (loaded from
+       Google Fonts) is the Android/Windows Thai fallback — but it ships
+       with Latin Basic glyphs and NO unicode-range gate, so it must sit
+       AFTER the Latin generics; otherwise it intercepts EN headlines and
+       renders them as sans when Instrument Serif fails to paint in time. */
+    --serif:"Instrument Serif", "SiftlyThai", ui-serif, Georgia, "IBM Plex Sans Thai", serif;
+    --sans:"Inter", "SiftlyThai", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, "IBM Plex Sans Thai", sans-serif;
+    --mono:"JetBrains Mono", "SiftlyThai", ui-monospace, SFMono-Regular, Menlo, "IBM Plex Sans Thai", monospace;
 
     /* Display/body fonts — rebound by Voice tweak */
     --display:var(--serif);
